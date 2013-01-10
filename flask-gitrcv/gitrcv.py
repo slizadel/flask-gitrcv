@@ -7,7 +7,7 @@ def hello_world():
 
 @app.route('/rcv', methods=['POST'])
 def rcv_hook():
-    app.logger.debug(request.data)
+    app.logger.debug(request.json)
     if request.headers['Content-Type'] == 'application/json':
         print json.dumps(request.json)
         return json.dumps(request.json)
