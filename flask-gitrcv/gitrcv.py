@@ -1,6 +1,8 @@
 from flask import Flask, request, json
 app = Flask(__name__)
 
+REPO = '/opt/flask-gitrcv'
+
 @app.route('/')
 def hello_world():
     return 'Hello World!'
@@ -8,10 +10,12 @@ def hello_world():
 @app.route('/rcv', methods=['POST'])
 def rcv_hook():
     request_json = request.form.get('payload')
-    app.logger.debug(request_json)
-    app.logger.debug(type(request_json))
     request_json = json.loads(request_json)
     app.logger.debug(request_json['repository']['name'])
+    rep = Repo(REPO)
+    origin = repo.remotes.origin
+    app.logger.debug(origin)
+    origin.pull()
 
     return 'Payload'
 
