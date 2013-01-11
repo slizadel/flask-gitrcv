@@ -10,12 +10,16 @@ def hello_world():
 
 @app.route('/rcv', methods=['POST'])
 def rcv_hook():
+    # Grab the JSON from the POST request
     request_json = request.form.get('payload')
     request_json = json.loads(request_json)
     app.logger.debug(request_json['repository']['name'])
+
+    # Setup the git repo. 
     repo = Repo(REPO)
     origin = repo.remotes.origin
-    app.logger.debug(origin)
+
+    # Pull in the latest version.
     origin.pull()
 
     return 'Payload'
