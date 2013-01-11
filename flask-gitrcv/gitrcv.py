@@ -22,7 +22,7 @@ def rcv_hook():
     # Pull in the latest version.
     origin.pull()
 
-    return 'Payload'
+    return '200'
 
 if __name__ == '__main__':
     app.debug = True
