@@ -22,6 +22,9 @@ def rcv_hook():
     # Pull in the latest version.
     origin.pull()
 
+    # We could add in the ability to run a command after 
+    #  the pull has been completed. If we wanted to be cool like that.
+
     return '200'
 
 if __name__ == '__main__':
